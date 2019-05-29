@@ -22,7 +22,7 @@ $html=<<<A
                 <tr>
                 	<td><input class="sort" type="text" name="sort" /></td>
                 	<td>{$data['module_name']}[id:{$data['id']}]</td>
-                	<td><a href="#">[Visit]</a>&nbsp;&nbsp;<a href="#">[Edit]</a>&nbsp;&nbsp;<a href="#">[Delete]</a></td>
+                	<td><a href="#">[Visit]</a>&nbsp;&nbsp;<a href="#">[Edit]</a>&nbsp;&nbsp;<a href="father_module_delete.php?id={$data['id']}">[Delete]</a></td>
                 </tr>
 A;
                 echo $html;
