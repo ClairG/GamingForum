@@ -2,7 +2,10 @@
 include_once '../inc/config.inc.php';
 include_once '../inc/mysql.inc.php';
 $link = connect();
-
+$template['title'] = 'Father Module List';
+$template['keywords'] = 'Father Module List';
+$template['description'] = 'Father Module List';
+$template['css'] = array('style/public2.css');
 
 ?>
 <?php include 'inc/header.inc.php';?>

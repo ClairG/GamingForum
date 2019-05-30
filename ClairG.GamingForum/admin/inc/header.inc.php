@@ -1,11 +1,16 @@
+<?php 
+    //$a = basename($_SERVER['SCRIPT_NAME']);
+?>
 <!DOCTYPE html>
 <html>
     <head>
         <meta charset="utf-8" />
-        <title>adminstrator - backend management</title>
-        <meta name="keywords" content="backend management" />
-        <meta name="description" content="backend management" />
-        <link rel="stylesheet" type="text/css" href="style/public.css" />
+        <title>adminstrator - <?php echo $template['title'] ?></title>
+        <meta name="keywords" content="<?php echo $template['keywords'] ?>" />
+        <meta name="description" content="<?php echo $template['description'] ?>" />
+        <?php foreach ($template['css'] as $css) {
+            echo "<link rel='stylesheet' type='text/css' href='{$css}' />";
+        }?>
     </head>
     <body>
     	<!-- top bar -->
@@ -24,7 +29,7 @@
 			<li>
 				<div class="small_title">System</div>
 				<ul class="child">
-					<li><a class="current" href="#">System Information</a></li>
+					<li><a href="#">System Information</a></li>
 					<li><a href="#">Administrator</a></li>
 					<li><a href="#">Add Administrator</a></li>
 					<li><a href="#">Setting</a></li>
@@ -33,8 +38,8 @@
 			<li>
 				<div class="small_title">Content Management</div>
 				<ul class="child">
-					<li><a class="current" href="#">Father Module List</a></li>
-					<li><a href="#">Add Father Module</a></li>
+					<li><a <?php if(basename($_SERVER['SCRIPT_NAME'])=='father_module.php'){echo 'class="current"';}?> href="father_module.php">Father Module List</a></li>
+					<li><a <?php if(basename($_SERVER['SCRIPT_NAME'])=='father_module_add.php'){echo 'class="current"';}?> href="father_module_add.php">Add Father Module</a></li>
 					<li><a href="#">Child Module List</a></li>
 					<li><a href="#">Add Child Module</a></li>
 					<li><a href="#">Thread Management</a></li>
