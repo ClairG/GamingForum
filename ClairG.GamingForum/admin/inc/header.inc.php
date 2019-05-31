@@ -40,8 +40,13 @@
 				<ul class="child">
 					<li><a <?php if(basename($_SERVER['SCRIPT_NAME'])=='father_module.php'){echo 'class="current"';}?> href="father_module.php">Father Module List</a></li>
 					<li><a <?php if(basename($_SERVER['SCRIPT_NAME'])=='father_module_add.php'){echo 'class="current"';}?> href="father_module_add.php">Add Father Module</a></li>
+					<?php 
+					if(basename($_SERVER['SCRIPT_NAME'])=='father_module_update.php'){
+					    echo '<li><a class="current">Update Father Module</a></li>';
+					}
+					?>
 					<li><a href="#">Child Module List</a></li>
-					<li><a href="#">Add Child Module</a></li>
+					<li><a <?php if(basename($_SERVER['SCRIPT_NAME'])=='son_module_add.php'){echo 'class="current"';}?> href="son_module_add.php">Add Child Module</a></li>
 					<li><a href="#">Thread Management</a></li>
 				</ul>
 			</li>

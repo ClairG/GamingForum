@@ -3,10 +3,6 @@
 if(empty($_POST['module_name'])){
     skip('father_module_add.php', 'error', 'Module Name is Required.');
 }
-//sort is a number
-if(!is_numeric($_POST['sort'])){
-    skip('father_module_add.php', 'error', 'Sort must be in the form of a number.');
-}
 //encode query string
 $_POST = escape($link, $_POST);
 //
@@ -25,6 +21,9 @@ $result = execute($link, $query);
 if(mysqli_num_rows($result)){
     skip('father_module_add.php', 'error', 'Module Exists.');
 }    
-
+//sort is a number
+if(!is_numeric($_POST['sort'])){
+    skip('father_module_add.php', 'error', 'Sort must be in the form of a number.');
+}
 
 ?>

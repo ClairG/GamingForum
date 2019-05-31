@@ -38,7 +38,7 @@ if(isset($_POST['submit'])){
 ?>
 <?php include 'inc/header.inc.php';?>
 <div id="main">
-	<div class="title">Update Father Module - </div>
+	<div class="title">Update Father Module - <?php echo $data['module_name']?></div>
 	<form method="post">
 		<table class="au">
 			<tr>
