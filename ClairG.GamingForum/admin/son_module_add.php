@@ -16,14 +16,14 @@ if(isset($_POST['submit'])){
         skip('son_module_add.php', 'error', 'Failed to add. Please try it again.');
     }
 }
-$template['title'] = 'Add Son Module';
-$template['keywords'] = 'Add Son Module';
-$template['description'] = 'Add Son Module';
+$template['title'] = 'Add Child Module';
+$template['keywords'] = 'Add Child Module';
+$template['description'] = 'Add Child Module';
 $template['css'] = array('style/public2.css');
 ?>
 <?php include 'inc/header.inc.php';?>
 <div id="main">
-	<div class="title">Add Son Module</div>
+	<div class="title">Add Child Module</div>
 	<form method="post">
 		<table class="au">
 			<tr>
@@ -42,7 +42,7 @@ $template['css'] = array('style/public2.css');
 				<td>required</td>
 			</tr>
 			<tr>
-				<td>Module Name</td>
+				<td>Child Module Name</td>
 				<td><input name="module_name" type="text" /></td>
 				<td>
 					required
