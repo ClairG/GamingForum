@@ -1,16 +1,31 @@
 <?php
 include_once '../inc/config.inc.php';
 include_once '../inc/mysql.inc.php';
+include_once '../inc/tool.inc.php';
 $link = connect();
 $template['title'] = 'Child Module List';
 $template['keywords'] = 'Child Module List';
 $template['description'] = 'Child Module List';
 $template['css'] = array('style/public2.css');
-
+//update sort
+if(isset($_POST['submit'])){
+    foreach ($_POST['sort'] as $key=>$val){
+        if(!is_numeric($val) || !is_numeric($key)){
+            skip('son_module.php','error','sort must be a number');
+        }
+        $query[]="update bbs_son_module set sort={$val} where id={$key}";
+    }
+    if(execute_multi($link,$query,$error)){
+        skip('son_module.php','ok','Updated Successfully');
+    }else{
+        skip('son_module.php','error',$error);
+    }
+}
 ?>
 <?php include 'inc/header.inc.php';?>
 	<div id="main">
 		<div class="title">Child Module List</div>
+		<form method="post">
 		<table class="list">
 			<tr>
 				<th>Sort</th> 	 	
@@ -20,7 +35,7 @@ $template['css'] = array('style/public2.css');
 				<th>Operation</th>
 			</tr>
 			<?php 
-			$query = "select bsm.id, bsm.module_name, bfm.module_name bfn, bsm.member_id from bbs_son_module bsm, bbs_father_module bfm where bsm.father_module_id=bfm.id order by bfm.id";
+			$query = "select bsm.id, bsm.module_name, bfm.module_name bfn, bsm.member_id, bsm.sort from bbs_son_module bsm, bbs_father_module bfm where bsm.father_module_id=bfm.id order by bfm.id";
 			$result = execute($link, $query);
 			while ($data = mysqli_fetch_assoc($result)){
 			    //delete confirm - yes
@@ -33,7 +48,7 @@ $template['css'] = array('style/public2.css');
 			    $delete_url = "confirm.php?url={$url}&return_url={$return_url}&message={$message}";
 $html=<<<A
                 <tr>
-                	<td><input class="sort" type="text" name="sort" /></td>                    
+                	<td><input class="sort" type="text" name="sort[{$data['id']}]" value="{$data['sort']}"/></td>                    
                 	<td>{$data['module_name']}[id:{$data['id']}]</td>
                     <td>{$data['bfn']}</td>
                     <td>{$data['member_id']}</td>
@@ -42,9 +57,10 @@ $html=<<<A
 A;
                 echo $html;
 			}				
-			?>
-			
+			?>			
 		</table>
+		<input style="margin:10px 0 0 0px; cursor: pointer;" class="btn" type="submit" name="submit" value="Update Sort" />
+		</form>
 	</div>
 <?php include 'inc/footer.inc.php';?>
 
