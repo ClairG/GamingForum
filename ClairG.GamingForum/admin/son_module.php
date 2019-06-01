@@ -37,7 +37,7 @@ $html=<<<A
                 	<td>{$data['module_name']}[id:{$data['id']}]</td>
                     <td>{$data['bfn']}</td>
                     <td>{$data['member_id']}</td>
-                	<td><a href="#">[Visit]</a>&nbsp;&nbsp;<a href="father_module_update.php?id={$data['id']}">[Edit]</a>&nbsp;&nbsp;<a href="$delete_url">[Delete]</a></td>
+                	<td><a href="#">[Visit]</a>&nbsp;&nbsp;<a href="son_module_update.php?id={$data['id']}">[Edit]</a>&nbsp;&nbsp;<a href="$delete_url">[Delete]</a></td>
                 </tr>
 A;
                 echo $html;
