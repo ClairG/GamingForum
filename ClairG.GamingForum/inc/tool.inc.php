@@ -20,4 +20,19 @@ A;
 echo $html;
 exit();
 }
+//login status
+function is_login($link){
+    if(isset($_COOKIE['bbs']['name'])&isset($_COOKIE['bbs']['pw'])){
+        $query = "select * from bbs_member where name = '{$_COOKIE['bbs']['name']}' and pw='{$_COOKIE['bbs']['pw']}'";
+        $result = execute($link, $query);
+        if(mysqli_num_rows($result)==1){
+            $data = mysqli_fetch_assoc($result);
+            return $data['id'];
+        }else{
+            return false;
+        }
+    }else{
+        return false;
+    }
+}
 ?>
