@@ -23,8 +23,15 @@
 				</form>
 			</div>
 			<div class="login">
-				<a>Sign in</a>&nbsp;
-				<a>| Register</a>
+				<?php if($member_id){
+				    echo "<span style = 'color:#fff;'>Hello, </span><a href='#'>{$_COOKIE['bbs']['name']}</a>";
+				}
+				else{
+				    echo "<a>Sign in</a>&nbsp;";
+				    echo "<a>| Register</a>";
+				}?>
+				
+				
 			</div>
 		</div>
 	</div>

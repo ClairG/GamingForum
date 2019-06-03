@@ -1,4 +1,3 @@
-
 * {
 	/*word-break: break-all;*/
 }
@@ -107,7 +106,7 @@ body {
 }
 #header .login {
 	float:right;
-	width:105px;
+	width:155px;
 }
 #header .login a {
 	color:#fff;

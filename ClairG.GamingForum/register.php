@@ -7,7 +7,7 @@ $template['keywords'] = 'Register';
 $template['description'] = 'Register';
 $template['css'] = array('style/public.css','style/register.css');
 $link = connect();
-if(is_login($link)){
+if($member_id = is_login($link)){
     skip('index.php','error','already log in');
 }
 if(isset($_POST['submit'])){
@@ -20,8 +20,8 @@ if(isset($_POST['submit'])){
     execute($link, $query);
     if(mysqli_affected_rows($link)==1){
         //set cookie
-        setcookie('bbs[name]', $_POST['name']);
-        setcookie('bbs[pw]',  md5($_POST['pw']));
+        setcookie('bbs[name]', $_POST['name'],time()+600);
+        setcookie('bbs[pw]',  md5($_POST['pw']),time()+600);
         skip('index.php', 'ok', 'Registered Successfully');
     }else{
         skip('register.php', 'error', 'Failed to register. Please try it again.');

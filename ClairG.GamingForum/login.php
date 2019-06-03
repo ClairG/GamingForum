@@ -7,7 +7,7 @@ $template['keywords'] = 'Sign In';
 $template['description'] = 'Sign In';
 $template['css'] = array('style/public.css','style/register.css');
 $link = connect();
-if(is_login($link)){
+if($member_id = is_login($link)){
     skip('index.php','error','already log in');
 }
 if(isset($_POST['submit'])){
