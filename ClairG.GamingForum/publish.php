@@ -12,32 +12,33 @@ if(!$member_id = is_login($link)){
 }
 //submit
 if(isset($_POST['submit'])){
-//     include 'inc/check_publish.inc.php';
-//     $_POST=escape($link,$_POST);
-//     $query="insert into bbs_content(module_id,title,content,time,member_id) values({$_POST['module_id']},'{$_POST['title']}','{$_POST['content']}',now(),{$member_id})";
-//     execute($link, $query);
-//     if(mysqli_affected_rows($link)==1){
-//         skip('publish.php', 'ok', '');
-//     }else{
-//         skip('publish.php', 'error', '');
-//     }
+    include 'inc/check_publish.inc.php';
+    $_POST=escape($link,$_POST);
+    $query="insert into bbs_thread(module_id,title,content,post_time,member_id) values({$_POST['module_id']},'{$_POST['title']}','{$_POST['content']}',now(),{$member_id})";
+    execute($link, $query);
+    if(mysqli_affected_rows($link)==1){
+        skip('publish.php', 'ok', 'Created Successfully.');
+    }else{
+        skip('publish.php', 'error', 'Failed to create.');
+    }
 }
 ?>
 <?php include_once 'inc/header.inc.php';?>
 	<div id="position" class="auto">
-		 <a href="#">Home</a> &gt; Create Thread
+		 <a href="index.php">Home</a> &gt; Create Thread
 	</div>
 	<div id="publish">
 		<form method="post">
 			<select name="module_id">
+				<option>====Please select a topic====</option>
 				<?php 
 				$query="select * from bbs_father_module order by sort";
 				$result_father=execute($link, $query);
-				while ($data_father=mysqli_fetch_assoc($result_father)){
+				while ($data_father = mysqli_fetch_assoc($result_father)){
 					echo "<optgroup label='{$data_father['module_name']}'>";
 					$query="select * from bbs_son_module where father_module_id={$data_father['id']} order by sort";
 					$result_son=execute($link, $query);
-					while ($data_son=mysqli_fetch_assoc($result_son)){
+					while ($data_son = mysqli_fetch_assoc($result_son)){
 						echo "<option value='{$data_son['id']}'>{$data_son['module_name']}</option>";
 					}
 					echo "</optgroup>";
