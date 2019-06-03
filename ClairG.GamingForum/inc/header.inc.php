@@ -27,8 +27,8 @@
 				    echo "<span style = 'color:#fff;'>Hello, </span><a href='#'>{$_COOKIE['bbs']['name']}</a>";
 				}
 				else{
-				    echo "<a>Sign in</a>&nbsp;";
-				    echo "<a>| Register</a>";
+				    echo "<a href='login.php'>Sign in</a>&nbsp;";
+				    echo "<a href='register.php'>| Register</a>";
 				}?>
 				
 				

@@ -81,12 +81,7 @@
 .box .classList .new {
 	background:url(new.gif) 0px center no-repeat;
 }
-.box .classList .old {
-	background:url(old.gif) 0px center no-repeat;
-}
-.box .classList .lock {
-	background:url(lock.gif) 0px center no-repeat;
-}
+
 #flink {
 	margin-top:15px;
 	background:#fff;
