@@ -12,16 +12,14 @@ if($member_id = is_login($link)){
 }
 
 ?>
-<?php include_once 'inc/header.inc.php';?>
-
-	
+<?php include_once 'inc/header.inc.php';?>	
 	<?php 
 	$query = "select * from bbs_father_module order by sort";
 	$result_father = execute($link, $query);
 	while($data_father=mysqli_fetch_assoc($result_father)):?>
 	<div class="box auto">
         <div class="title">
-            <?php echo "{$data_father['module_name']}"?>
+            <a href='list_father.php?id=<?php echo "{$data_father['id']}"?>' style='color:#105cb6;'><?php echo "{$data_father['module_name']}"?></a>
         </div>
         <div class="classList">            
  			<?php 

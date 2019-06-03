@@ -50,6 +50,9 @@
 	color:#105cb6;
 	font-weight:bold;
 }
+.box .title a:visited {
+	color:#105cb6;
+}
 
 .box .classList {
 	background:#ffffff;
