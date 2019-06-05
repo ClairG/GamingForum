@@ -30,16 +30,28 @@ if(isset($_POST['submit'])){
 	<div id="publish">
 		<form method="post">
 			<select name="module_id">
-				<option>====Please select a topic====</option>
+				<option value='-1'>====Please select a topic====</option>
 				<?php 
-				$query="select * from bbs_father_module order by sort";
+				//create a thread in list_father
+				$where='';
+				if(isset($_GET['father_module_id']) && is_numeric($_GET['father_module_id'])){				    
+				    $where = "where id={$_GET['father_module_id']} ";
+				} 
+				$query="select * from bbs_father_module $where order by sort";
 				$result_father=execute($link, $query);
 				while ($data_father = mysqli_fetch_assoc($result_father)){
 					echo "<optgroup label='{$data_father['module_name']}'>";
 					$query="select * from bbs_son_module where father_module_id={$data_father['id']} order by sort";
 					$result_son=execute($link, $query);
 					while ($data_son = mysqli_fetch_assoc($result_son)){
-						echo "<option value='{$data_son['id']}'>{$data_son['module_name']}</option>";
+					    //create a thread in list_son
+					    if(isset($_GET['son_module_id']) && $_GET['son_module_id']==$data_son['id']){
+					        echo "<option value='{$data_son['id']}' selected='selected'>{$data_son['module_name']}</option>";
+					    }
+					    //default
+					    else{
+					        echo "<option value='{$data_son['id']}'>{$data_son['module_name']}</option>";
+					    }						
 					}
 					echo "</optgroup>";
 				}

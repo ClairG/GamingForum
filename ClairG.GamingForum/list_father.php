@@ -24,7 +24,7 @@ $id_son='';
 $son_list='';
 while($data_son=mysqli_fetch_assoc($result_son)){
     $id_son.=$data_son['id'].',';
-    $son_list.="<a href='#'>{$data_son['module_name']}</a> ";
+    $son_list.="<a href='list_son.php?id={$data_son['id']}'>{$data_son['module_name']}</a> ";
 }
 $id_son=trim($id_son,',');
 if($id_son==''){
@@ -57,7 +57,8 @@ $template['css'] = array('style/public.css','style/list.css');
 				</div>
 <!-- 				Pagination -->
 				<div class="pages_wrap">
-					<a class="btn publish" href=""></a>
+<!-- 				Create a Thread -->
+					<a class="btn publish" href="publish.php?father_module_id=<?php echo $_GET['id']?>" target="_blank"></a>
 					<div class="pages">
 						<?php 
 						$page = page($count_all, 2);
@@ -110,7 +111,7 @@ $template['css'] = array('style/public.css','style/list.css');
 			</ul>
 <!-- 			Pagination -->
 			<div class="pages_wrap">
-				<a class="btn publish" href=""></a>
+				<a class="btn publish" href="publish.php?father_module_id=<?php echo $_GET['id']?>" target="_blank"></a>
 				<div class="pages">
 				<?php 
 				echo $page['html'];
@@ -136,7 +137,7 @@ $template['css'] = array('style/public.css','style/list.css');
 						$result_son=execute($link, $query);
 						while($data_son=mysqli_fetch_assoc($result_son)){
 						?>
-						<li><h3><a href="#"><?php echo $data_son['module_name']?></a></h3></li>
+						<li><h3><a href="list_son.php?id=<?php echo $data_son['id']?>"><?php echo $data_son['module_name']?></a></h3></li>
 						<?php 
 						}
 						?>

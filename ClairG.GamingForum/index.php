@@ -31,7 +31,7 @@ $member_id = is_login($link);
      			    $count_all=num($link,$query);
 $html=<<<A
                     <div class="childBox new">
-                        <h2><a href="#">{$data_son['module_name']}</a><span> (Today: {$count_today})</span></h2>
+                        <h2><a href="list_son.php?id={$data_son['id']}">{$data_son['module_name']}</a><span> (Today: {$count_today})</span></h2>
                         Threads: {$count_all}
                     </div>
 A;
