@@ -2,6 +2,7 @@
 include_once 'inc/config.inc.php';
 include_once 'inc/mysql.inc.php';
 include_once 'inc/tool.inc.php';
+include_once 'inc/page.inc.php';
 $link = connect();
 //login status
 if($member_id = is_login($link)){
@@ -60,13 +61,10 @@ $template['css'] = array('style/public.css','style/list.css');
 				<div class="pages_wrap">
 					<a class="btn publish" href=""></a>
 					<div class="pages">
-						<a>« Prev.</a>
-						<a>1</a>
-						<span>2</span>
-						<a>3</a>
-						<a>4</a>
-						<a>...13</a>
-						<a>Next »</a>
+						<?php 
+						$page = page($count_all, 1);
+						echo $page['html'];
+						?>
 					</div>
 					<div style="clear:both;"></div>
 				</div>
@@ -80,7 +78,7 @@ $template['css'] = array('style/public.css','style/list.css');
 				from bbs_thread,bbs_member,bbs_son_module where
 				bbs_thread.module_id in({$id_son}) and
 				bbs_thread.member_id=bbs_member.id and
-				bbs_thread.module_id=bbs_son_module.id";
+				bbs_thread.module_id=bbs_son_module.id {$page['limit']}";
 			    $result_content=execute($link,$query);
 			    while($data_thread=mysqli_fetch_assoc($result_content)):?>
 				<li>
@@ -116,13 +114,9 @@ $template['css'] = array('style/public.css','style/list.css');
 			<div class="pages_wrap">
 				<a class="btn publish" href=""></a>
 				<div class="pages">
-					<a>« Prev.</a>
-					<a>1</a>
-					<span>2</span>
-					<a>3</a>
-					<a>4</a>
-					<a>...13</a>
-					<a>Next »</a>
+				<?php 
+				echo $page['html'];
+				?>
 				</div>
 				<div style="clear:both;"></div>
 			</div>
