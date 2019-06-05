@@ -10,6 +10,14 @@ $page:?page=
 return:array('limit','html')
 */
 function page($count,$page_size,$num_btn=10,$page='page'){
+    //no thread
+    if($count==0){
+        $data=array(
+            'limit'=>'',
+            'html'=>''
+        );
+        return $data;
+    }
     //check
     if(!isset($_GET[$page]) || !is_numeric($_GET[$page]) || $_GET[$page]<1){
         $_GET[$page]=1;

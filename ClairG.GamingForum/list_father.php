@@ -5,9 +5,7 @@ include_once 'inc/tool.inc.php';
 include_once 'inc/page.inc.php';
 $link = connect();
 //login status
-if($member_id = is_login($link)){
-    //skip('index.php','error','already log in');
-}
+$member_id = is_login($link);
 //check father module id
 if(!isset($_GET['id']) || !is_numeric($_GET['id'])){
     skip('index.php', 'error', 'id is uncorrect');
@@ -62,7 +60,7 @@ $template['css'] = array('style/public.css','style/list.css');
 					<a class="btn publish" href=""></a>
 					<div class="pages">
 						<?php 
-						$page = page($count_all, 1);
+						$page = page($count_all, 2);
 						echo $page['html'];
 						?>
 					</div>

@@ -12,9 +12,9 @@
 <body>
 	<div class="header_wrap">
 		<div id="header" class="auto">
-			<div class="logo">Gaming Forum</div>
+			<div class="logo"><a href="index.php" style="color: white; text-decoration:none;">Gaming Forum</a></div>
 			<div class="nav">
-				<a class="hover">Home</a>
+				<a class="hover" href="index.php">Home</a>
 			</div>
 			<div class="serarch">
 				<form>
@@ -23,8 +23,8 @@
 				</form>
 			</div>
 			<div class="login">
-				<?php if($member_id){
-				    echo "<span style = 'color:#fff;'>Hello, </span><a href='#'>{$_COOKIE['bbs']['name']}</a>";
+				<?php if(isset($member_id) && $member_id){
+				    echo "<span style = 'color:#fff;'>Hello, </span><a href='#'>{$_COOKIE['bbs']['name']}</a> <a href='logout.php'> | Log out</a>";
 				}
 				else{
 				    echo "<a href='login.php'>Sign in</a>&nbsp;";

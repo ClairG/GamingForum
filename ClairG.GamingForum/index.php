@@ -2,14 +2,12 @@
 include_once 'inc/config.inc.php';
 include_once 'inc/mysql.inc.php';
 include_once 'inc/tool.inc.php';
-$template['title'] = 'Home Page';
-$template['keywords'] = 'Home Page';
-$template['description'] = 'Home Page';
+$template['title'] = 'Home';
+$template['keywords'] = 'Home';
+$template['description'] = 'Home';
 $template['css'] = array('style/public.css','style/index.css');
 $link = connect();
-if($member_id = is_login($link)){
-    //skip('index.php','error','already log in');
-}
+$member_id = is_login($link);
 
 ?>
 <?php include_once 'inc/header.inc.php';?>	
