@@ -80,6 +80,7 @@ $template['css'] = array('style/public.css','style/list.css');
 				bbs_thread.module_id=bbs_son_module.id {$page['limit']}";
 			    $result_content=execute($link,$query);
 			    while($data_thread=mysqli_fetch_assoc($result_content)):?>
+			    <?php $data_thread['title']=htmlspecialchars($data_thread['title']);?>
 				<li>
 					<div class="smallPic">
 						<a href="#">
@@ -92,7 +93,7 @@ $template['css'] = array('style/public.css','style/list.css');
 					<div class="subject">
 						<div class="titleWrap">
 						<a href="#">[<?php echo "{$data_thread['module_name']}" ?>]</a>&nbsp;&nbsp;
-						<h2><a href="#"><?php echo "{$data_thread['title']}" ?></a></h2></div>
+						<h2><a href="show.php?id=<?php echo $data_thread['id']?>"><?php echo "{$data_thread['title']}" ?></a></h2></div>
 						<p>
 							<?php echo "{$data_thread['name']}" ?>&nbsp;<?php echo "{$data_thread['post_time']}" ?>&nbsp;&nbsp;&nbsp;&nbsp;Last reply: time
 						</p>
